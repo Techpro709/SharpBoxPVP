@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+
+    <meta name="author" content="ProtonZ709, SharpBoxPVP+Author@gmail.com">
+    <meta name="designer" content="ProtonZ709">
+    <meta name="og:title" content="SharpBoxPVP" />
+    <meta name="og:type" content="website" />
+    <meta name="og:image" content="logo.png" />
+    <meta name="og:site_name" content="SharpBoxPVP" />
+    <meta name="og:description" content="Box Server called SharpBoxPVP" />
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Staff Applications</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/siwalikm/quick-form-css@2.2.2/qfc-dark.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css">
+
+</head>
+
+<body>
+    <div class="qfc-container">
+        <h2>Staff Applications</h2>
+        <label>Become a staff for SharpBoxPVP!</label>
+        <form id="appl">
+            <div>
+                <div>
+                    <input placeholder="Discord Username" type="text" required id="discUser">
+                </div>
+                <br>
+                <div>
+                    <input placeholder="Minecraft Username" type="text" required id="mcUser">
+                </div>
+                <br>
+                <div>
+                    <input placeholder="AGE (must be 13+)" type="number" required id="age">
+                </div>
+                <br>
+                <div>
+                    <input placeholder="How many years have you been playing minecraft for?" type="text" required
+                        id="mcYears">
+                </div>
+                <br>
+                <div>
+                    <label>What Position are you applying for</label>
+                    <select id="position">
+                        <option selected value="admin">Admin</option>
+                        <option value="discAdmin">Discord Admin</option>
+                        <option value="mod">Mod</option>
+                        <option value="discMod">Discord Mod</option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    <label>Have you been in your chosen position before? If yes, please list all examples.</label>
+                    <div>
+                        <textarea placeholder="I was mod in Hypixel for this long" id="experience"></textarea>
+                    </div>
+                </div>
+                <br>
+                <!-- <div>
+                    <label>Attach proof of being Admin / Mod (optional)</label>
+                    <div>
+                        <input type="file" id="file">
+                    </div>
+                </div> -->
+                <br>
+                <div>
+                    <label>Why do you want this position?</label>
+                    <div>
+                        <textarea placeholder="Because I want to be a good person and help the community. :]"
+                            id="posReason"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <input type="checkbox" required id="powerAbuse">
+                        <label>Do you agree to not abusing power?</label>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <input type="checkbox" required id="modTime">
+                        <label>Do you agree to having at least 3 hours of Moderation per week?</label>
+                    </div>
+                </div>
+                <div>
+                    <label>Rate yourself for this position (single-select)</label>
+                    <select id="selfRate">
+                        <option selected value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+
+                    </select>
+                </div>
+                <div>
+                    <label>Anything else you have to say?</label>
+                    <div>
+                        <textarea placeholder="Enter your message here" id="notes"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="notification-box flex flex-col items-center justify-center fixed w-full z-50 p-3">
+            <!-- Notification container -->
+        </div>
+    </div>
+
+    <script src="./js/scripts.js"></script>
+    <script>
+        document.getElementById("appl").addEventListener("submit", function (event) {
+            event.preventDefault();
+            submit()
+        });
+
+        function submit() {
+            console.log('worked')
+            var discUser = document.getElementById('discUser').value;
+            var mcUser = document.getElementById('mcUser').value;
+            var age = document.getElementById('age').value;
+            var mcYears = document.getElementById('mcYears').value;
+
+            var position = document.getElementsByName('position').value;
+
+
+            var experience = document.getElementById('experience').value;
+            //            var proofFile; // I think I will add this at a later date
+            var posReason = document.getElementById('posReason').value;
+
+            var powerAbuse = document.getElementById('powerAbuse').value;
+            if (powerAbuse == "on") {
+                powerAbuse = true;
+            }
+            var modTime = document.getElementById('modTime').value;
+            if (modTime == "on") {
+                modTime = true;
+            }
+            var selfRate = document.getElementById('selfRate').value;
+            var notes = document.getElementById('notes').value;
+
+
+
+            console.log(`Discord Username: ${discUser}`);
+            console.log(`Minecraft Username: ${mcUser}`);
+            console.log(`Age: ${age}`);
+            console.log(`Years Playing Minecraft: ${mcYears}`);
+            console.log(`Position: ${position}`);
+            console.log(`Experience: ${experience}`);
+            console.log(`Reason Chose this Position: ${posReason}`);
+            console.log(`Will not power abuse: ${powerAbuse}`);
+            console.log(`Will be online at least 3 hours a week: ${modTime}`);
+            console.log(`Self Rating out of ten: ${selfRate}`);
+            console.log(`Any other notes: ${notes}`);
+
+
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({
+                "content": "Staff Application",
+                "embeds": [
+                    {
+                        "title": `Staff Application for ${mcUser}`,
+                        "color": 61622,
+                        "fields": [
+                            {
+                                "name": "Age:",
+                                "value": `${age}`
+                            },
+                            {
+                                "name": "Years Playing Minecraft:",
+                                "value": `${mcYears}`
+                            },
+                            {
+                                "name": "Position:",
+                                "value": `${position}`
+                            },
+                            {
+                                "name": "Experience:",
+                                "value": `${experience}`
+                            },
+                            {
+                                "name": "Reason Chose this Position:",
+                                "value": `${posReason}`
+                            },
+                            {
+                                "name": "Will not power abuse:",
+                                "value": `${powerAbuse}`
+                            },
+                            {
+                                "name": "Will be online at least 3 hours a week:",
+                                "value": `${modTime}`
+                            },
+                            {
+                                "name": `Self Rating out of ten:`,
+                                "value": `${selfRate}`
+                            },
+                            {
+                                "name": "Any other notes:",
+                                "value": `${notes}`
+                            }
+                        ],
+                        "author": {
+                            "name": `${discUser}`
+                        }
+                    }
+                ],
+                "attachments": []
+            });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch("https://discord.com/api/webhooks/1110765357586718730/s-Wamb9MGhpfxUrWLD-yt-bj2pYiQsadvYI9YQrZisO7-JfJ-YZ1GfFT7-Dn2-quviQQ", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+                
+            sendNotification('success', 'Application Sent!');
+            location.replace('./')
+
+        }
+    </script>
+
+</body>
+
+</html>
